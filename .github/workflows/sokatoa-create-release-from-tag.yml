@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir ${{ github.event.inputs.RELEASE_TAG }}
           cp build/tools/spirv-dis ${{ github.event.inputs.RELEASE_TAG }}
-          tar -czf ${{ github.event.inputs.RELEASE_TAG }}.tar.gz -C ${{ github.event.inputs.RELEASE_TAG }} *
+          tar -czvf ${{ github.event.inputs.RELEASE_TAG }}.tar.gz -C ${{ github.event.inputs.RELEASE_TAG }} `ls -A ${{ github.event.inputs.RELEASE_TAG }}`
 
       - name: Archive results
         if: runner.os == 'Windows'
