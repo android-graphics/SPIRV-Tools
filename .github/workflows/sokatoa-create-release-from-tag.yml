@@ -1,7 +1,7 @@
 name: Sokatoa create release from tag
 
 env:
-  RELEASE_TAG: "2023.2"
+  RELEASE_TAG: "v2023.2"
 
 on:
   pull_request: #TODO
@@ -9,7 +9,7 @@ on:
     inputs:
       release_tag:
         description: 'Release tag'
-        default: env.RELEASE_TAG
+        default: ${{ env.RELEASE_TAG }}
         required: true
         type: string
 
