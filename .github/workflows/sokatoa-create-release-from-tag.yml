@@ -47,7 +47,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-        ref: $RELEASE_TAG
+        with:
+          ref: $RELEASE_TAG
 
       - name: Build
         shell: bash
