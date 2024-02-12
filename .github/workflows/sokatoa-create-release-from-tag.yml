@@ -70,6 +70,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.event.inputs.RELEASE_TAG }}
-          files: build/tools/spirv-dis.exe
+          files: build/tools/Release/spirv-dis.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
