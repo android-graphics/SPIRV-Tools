@@ -9,7 +9,7 @@ on:
     inputs:
       release_tag:
         description: 'Release tag'
-        default: ${{ env.RELEASE_TAG }}
+        default: $RELEASE_TAG
         required: true
         type: string
 
