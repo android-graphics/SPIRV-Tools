@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir ${{ github.event.inputs.RELEASE_TAG }}
           cp build/tools/spirv-dis ${{ github.event.inputs.RELEASE_TAG }}
-          tar -czf ${{ github.event.inputs.RELEASE_TAG }}.tar.gz ${{ github.event.inputs.RELEASE_TAG }}
+          tar -czf ${{ github.event.inputs.RELEASE_TAG }}.tar.gz -C ${{ github.event.inputs.RELEASE_TAG }} .
 
       - name: Archive results
         if: runner.os == 'Windows'
@@ -70,7 +70,7 @@ jobs:
         run: |
           mkdir ${{ github.event.inputs.RELEASE_TAG }}
           cp build/tools/Release/spirv-dis.exe ${{ github.event.inputs.RELEASE_TAG }}
-          7z a ${{ github.event.inputs.RELEASE_TAG }}.zip .\${{ github.event.inputs.RELEASE_TAG }}\*
+          7z a ${{ github.event.inputs.RELEASE_TAG }}.zip ./${{ github.event.inputs.RELEASE_TAG }}\*
 
       - name: Upload artifacts
         if: runner.os == 'Linux'
@@ -86,6 +86,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.event.inputs.RELEASE_TAG }}
-          files: build/tools/Release/spirv-dis.exe
+          files: ${{ github.event.inputs.RELEASE_TAG }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
